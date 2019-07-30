@@ -15,8 +15,8 @@ print("Y")
 print(Y)
 
 #Step 3: Handling the missing data
-from sklearn.preprocessing import Imputer
-imputer = Imputer(missing_values = "NaN", strategy = "mean", axis = 0)
+from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(missing_values = np.nan, strategy = "mean")
 imputer = imputer.fit(X[ : , 1:3])
 X[ : , 1:3] = imputer.transform(X[ : , 1:3])
 print("---------------------")
@@ -27,9 +27,12 @@ print(X)
 
 #Step 4: Encoding categorical data
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+# 标签编码
 labelencoder_X = LabelEncoder()
+# 第一列
 X[ : , 0] = labelencoder_X.fit_transform(X[ : , 0])
 #Creating a dummy variable
+# 独热编码
 onehotencoder = OneHotEncoder(categorical_features = [0])
 X = onehotencoder.fit_transform(X).toarray()
 labelencoder_Y = LabelEncoder()

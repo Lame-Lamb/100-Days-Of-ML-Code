@@ -19,7 +19,9 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 # Fitting Random Forest to the Training set
+# 随机森林
 from sklearn.ensemble import RandomForestClassifier
+# n_estimators决策树个数 entropy信息增益 random_state为了保证程序每次运行都分割一样的训练集和测试集
 classifier = RandomForestClassifier(n_estimators = 10, criterion = 'entropy', random_state = 0)
 classifier.fit(X_train, y_train)
 
@@ -29,6 +31,8 @@ y_pred = classifier.predict(X_test)
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
+print("confusion_matrix")
+print(cm)
 
 # Visualising the Training set results
 from matplotlib.colors import ListedColormap

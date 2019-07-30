@@ -19,16 +19,22 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 # Fitting K-NN to the Training set
+# k临近法
 from sklearn.neighbors import KNeighborsClassifier
+# 临近数量 闵可夫斯基空间 p=2相当于使用欧几里得距离
 classifier = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2)
 classifier.fit(X_train, y_train)
 
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
+print(y_test)
+print(y_pred)
 
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 cm = confusion_matrix(y_test, y_pred)
+print("confusion_matrix")
 print(cm)
+print("classification_report")
 print(classification_report(y_test, y_pred))

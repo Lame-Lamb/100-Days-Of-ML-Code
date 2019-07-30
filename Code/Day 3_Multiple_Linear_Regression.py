@@ -13,9 +13,13 @@ labelencoder = LabelEncoder()
 X[: , 3] = labelencoder.fit_transform(X[ : , 3])
 onehotencoder = OneHotEncoder(categorical_features = [3])
 X = onehotencoder.fit_transform(X).toarray()
+print("onehot:")
+print(X[:10])
 
 # Avoiding Dummy Variable Trap
 X = X[: , 1:]
+print("Avoiding Dummy Variable Trap")
+print(X)
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
@@ -31,4 +35,8 @@ y_pred = regressor.predict(X_test)
 
 # regression evaluation
 from sklearn.metrics import r2_score
-print(r2_score(Y_test, y_pred))
+print("y_pred")
+print(y_pred)
+print("Y_test")
+print(Y_test)
+print(r2_score(Y_test, y_pred))     # 越接近1，模型越好

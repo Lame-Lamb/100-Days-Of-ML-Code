@@ -21,6 +21,7 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 #Fitting SVM to the Training set
+# 支持向量机
 from sklearn.svm import SVC
 classifier = SVC(kernel = 'linear', random_state = 0)
 classifier.fit(X_train, y_train)
@@ -32,7 +33,9 @@ y_pred = classifier.predict(X_test)
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 cm = confusion_matrix(y_test, y_pred)
+print("confusion_matrix")
 print(cm)
+print("report")
 print(classification_report(y_test, y_pred))
 
 #Visualising the Training set results
